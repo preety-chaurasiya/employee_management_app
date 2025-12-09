@@ -1,0 +1,20 @@
+<nav class="top-nav">
+
+  <div class="logo">
+    EMS
+  </div>
+
+  <div class="menu">
+    <a routerLink="/layout/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/layout/employee" routerLinkActive="active">Employee</a>
+    <a routerLink="/layout/projects" routerLinkActive="active">Projects</a>
+    <a routerLink="/layout/project-employee" routerLinkActive="active">Project-Employee</a>
+  </div>
+
+  <button class="logout" (click)="logout()">Logout</button>
+
+</nav>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,54 @@
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h2 class="auth-title">Welcome Back</h2>
+
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+
+      <!-- Error Message -->
+      <p class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+      <!-- Lock Message -->
+      <div *ngIf="isLocked" class="lock-msg">
+        Login locked. Try again in 
+        <strong>{{ remainingTime / 1000 | number:'1.0-0' }} seconds</strong>.
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email" required email placeholder="Enter your email"
+               #emailRef="ngModel" />
+        <small class="error-msg" *ngIf="emailRef.invalid && emailRef.touched">
+          <span *ngIf="emailRef.errors?.['required']">Email is required.</span>
+          <span *ngIf="emailRef.errors?.['email']">Enter a valid email.</span>
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" required minlength="6"
+               placeholder="Enter password" #passwordRef="ngModel" />
+        <small class="error-msg" *ngIf="passwordRef.invalid && passwordRef.touched">
+          <span *ngIf="passwordRef.errors?.['required']">Password is required.</span>
+          <span *ngIf="passwordRef.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </small>
+      </div>
+
+      <button type="submit" class="btn-primary" [disabled]="loginForm.invalid || isLocked">
+        Login
+      </button>
+
+    </form>
+
+    <p class="switch-text">Don't have an account?</p>
+
+    <button type="button" class="btn-secondary" (click)="goToRegister()">
+      Register Here
+    </button>
+
+  </div>
+
+</div>

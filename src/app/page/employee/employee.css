@@ -1,0 +1,91 @@
+/* ===========================
+   Header Section
+=========================== */
+.header-section {
+  display: flex;
+  flex-wrap: wrap;       /* allows wrapping on small screens */
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.header-section h2 {
+  font-weight: 700;
+  color: #2a3f5f;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+/* Container for search input + button */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Search Input */
+.search-input {
+  width: 280px;
+  max-width: 100%;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.search-input::placeholder {
+  color: #a0a0a0;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0,123,255,0.3);
+}
+
+/* Add New Employee Button */
+.btn-add {
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ===========================
+   Responsive Adjustments
+=========================== */
+@media(max-width: 768px) {
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-actions {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search-input {
+    flex: 1;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+}

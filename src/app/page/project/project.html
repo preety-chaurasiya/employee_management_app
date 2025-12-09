@@ -1,0 +1,107 @@
+<div class="project-container">
+
+  <div class="header-section">
+    <h2>📁 Projects</h2>
+
+    <input 
+    type="text" 
+    class="search-input"
+    placeholder="Search employee..."
+    [(ngModel)]="searchText"
+    (input)="filterProjects()"
+  />
+
+    <button class="btn-add" (click)="newProject()">
+      + New Project
+    </button>
+  </div>
+
+
+  <!-- =============================== -->
+  <!-- PROJECT FORM -->
+  <!-- =============================== -->
+  <form *ngIf="showForm" [formGroup]="projectForm" class="project-form">
+
+    <div class="row g-3">
+
+      <div class="col-md-6">
+        <label>Project Name</label>
+        <input type="text" class="form-control" formControlName="projectName">
+      </div>
+
+      <div class="col-md-6">
+        <label>Client Name</label>
+        <input type="text" class="form-control" formControlName="clientName">
+      </div>
+
+      <div class="col-md-6">
+        <label>Start Date</label>
+        <input type="date" class="form-control" formControlName="startDate">
+      </div>
+
+      <div class="col-md-6">
+        <label>Lead By Employee</label>
+        <select class="form-select" formControlName="leadBy">
+          <option value="">Select Employee</option>
+          <option *ngFor="let e of employees" [value]="e.name">{{ e.name }}</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="form-actions mt-4">
+      <button type="button" class="btn-save" (click)="saveProject()">Save</button>
+      <button type="button" class="btn-cancel ms-2" (click)="closeForm()">Cancel</button>
+    </div>
+
+  </form>
+
+
+
+  <!-- =============================== -->
+  <!-- PROJECT TABLE -->
+  <!-- =============================== -->
+  <div class="table-responsive" *ngIf="!showForm && projects.length > 0">
+
+    <table class="table table-striped table-hover custom-table mt-4">
+
+      <thead>
+        <tr>
+          <th>ProjectId</th>
+          <th>Project</th>
+          <th>Client</th>
+          <th>Start Date</th>
+          <th>Lead By</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of filteredProjects; let i = index">
+          
+          <td>{{ p.projectId }}</td>
+          <td>{{ p.projectName }}</td>
+          <td>{{ p.clientName }}</td>
+          <td>{{ p.startDate }}</td>
+          <td>
+            <span class="lead-chip">{{ p.leadBy }}</span>
+          </td>
+          <td>
+            <button class="btn-edit" (click)="editProject(p._id)">Edit</button>
+            <button class="btn-delete ms-2" (click)="deleteProject(p._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <!-- EMPTY MESSAGE -->
+  <div *ngIf="!showForm && projects.length === 0" class="empty">
+    <p>No projects found. Click <strong>"New Project"</strong> to get started.</p>
+  </div>
+
+</div>

@@ -1,0 +1,86 @@
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h2 class="auth-title">Create Account</h2>
+
+    <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" novalidate>
+
+      <!-- Global Error Message -->
+      <p class="error-msg" *ngIf="errorMsg">{{ errorMsg }}</p>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+          email
+          placeholder="Enter your email"
+          #emailRef="ngModel"
+        />
+        <small class="error-msg" *ngIf="emailRef.invalid && emailRef.touched">
+          <span *ngIf="emailRef.errors?.['required']">Email is required.</span>
+          <span *ngIf="emailRef.errors?.['email']">Enter a valid email.</span>
+        </small>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          minlength="6"
+          placeholder="Enter password"
+          #passwordRef="ngModel"
+        />
+        <small class="error-msg" *ngIf="passwordRef.invalid && passwordRef.touched">
+          <span *ngIf="passwordRef.errors?.['required']">Password is required.</span>
+          <span *ngIf="passwordRef.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </small>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          required
+          minlength="6"
+          placeholder="Confirm password"
+          #confirmRef="ngModel"
+        />
+        <small class="error-msg" *ngIf="confirmRef.invalid && confirmRef.touched">
+          <span *ngIf="confirmRef.errors?.['required']">Confirm password is required.</span>
+          <span *ngIf="confirmRef.errors?.['minlength']">Confirm password must be at least 6 characters.</span>
+        </small>
+        <small class="error-msg" *ngIf="password && confirmPassword && password !== confirmPassword">
+          Passwords do not match!
+        </small>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn-primary" [disabled]="registerForm.invalid || password !== confirmPassword">
+        Register
+      </button>
+
+    </form>
+
+    <p class="switch-text">
+      Already have an account?
+    </p>
+
+    <button type="button" class="btn-secondary" (click)="goToLogin()">
+      Login Here
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,84 @@
+/* NAVBAR */
+.top-nav {
+  height: 60px;
+  background: #0066ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+}
+
+/* LOGO */
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  gap: 22px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: 0.25s;
+}
+
+/* Hover + Active */
+.menu a:hover,
+.menu a.active {
+  background: rgba(255,255,255,0.22);
+  color: white;
+}
+
+/* LOGOUT BUTTON */
+.logout {
+  background: white;
+  border: none;
+  color: #0066ff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.logout:hover {
+  background: #f0f5ff;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  padding: 20px;
+  background: #f8faff;
+  min-height: calc(100vh - 60px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 760px) {
+
+  .top-nav {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logout {
+    width: 100%;
+  }
+}

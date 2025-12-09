@@ -1,0 +1,211 @@
+/* ===========================
+   WRAPPER
+=========================== */
+.project-container {
+  padding: 20px;
+  background: #f9fafc;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===========================
+   SEARCH INPUT
+=========================== */
+.search-input {
+  width: 280px;
+  max-width: 100%;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  border: 1px solid #ced4da;
+  border-radius: 50px; /* rounded pill shape */
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  margin-right: 15px;
+}
+
+.search-input::placeholder {
+  color: #a0a0a0;
+  font-style: italic;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0,123,255,0.3);
+}
+
+/* Optional: Add a subtle icon inside the input */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.search-wrapper i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0a0a0;
+  pointer-events: none;
+}
+
+/* Add padding-left to input if using icon */
+.search-wrapper .search-input {
+  padding-left: 36px;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header-section h2 {
+  font-weight: 700;
+  color: #2a3f5f;
+  margin: 0;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+.btn-add {
+  background: #28a745;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.btn-add:hover {
+  background: #1e7e34;
+}
+
+.btn-save {
+  background: #007bff;
+  font-weight: 600;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 50px;
+}
+
+.btn-save:hover {
+  background: #0056b3;
+}
+
+.btn-cancel {
+  background: #6c757d;
+  font-weight: 600;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: none;
+}
+
+.btn-cancel:hover {
+  background: #545b62;
+}
+
+.btn-edit {
+  background: #ffd34e;
+  color: #2a3f5f;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-edit:hover {
+  background: #f4c63f;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+/* ===========================
+   FORM CARD
+=========================== */
+.project-form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  border-left: 5px solid #28a745;
+  transition: transform 0.2s ease;
+}
+
+.project-form:hover {
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   TABLE
+=========================== */
+.custom-table thead {
+  background: #e9eef5;
+  color: #2a3f5f;
+  font-weight: 600;
+}
+
+.custom-table tbody tr:hover {
+  background: #f2f7ff;
+  cursor: pointer;
+}
+
+/* LEAD TAG */
+.lead-chip {
+  background: #007bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* EMPTY MESSAGE */
+.empty {
+  text-align: center;
+  margin-top: 30px;
+  padding: 25px;
+  background: white;
+  border-radius: 10px;
+  color: #495057;
+  font-size: 15px;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media(max-width: 768px) {
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+}

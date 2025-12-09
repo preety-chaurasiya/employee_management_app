@@ -1,0 +1,84 @@
+<div class="container" style="display: flex; gap: 20px; flex-wrap: wrap;">
+
+  <!-- LEFT TABLE -->
+  <div class="left" style="flex: 1 1 60%; overflow-x: auto;">
+    <h2 class="header">Project Employee List</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: #f2f2f2;">
+        <tr>
+          <th>Emp Project ID</th>
+          <th>Project ID</th>
+          <th>Employee ID</th>
+          <th>Assigned Date</th>
+          <th>Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of projectEmployees">
+          <td>{{ p.empProjectId }}</td>
+          <td>{{ p.projectId }}</td>
+          <td>{{ p.employeeId }}</td>
+          <td>{{ p.assignedDate }}</td>
+          <td>{{ p.role }}</td>
+          <td>
+            <button class="btn-edit" (click)="edit(p.empProjectId)">Edit</button>
+            <button class="btn-delete" (click)="delete(p.empProjectId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="right" style="flex: 1 1 35%; padding: 15px; border: 1px solid #ccc; border-radius: 8px;">
+    <h2 class="header">Add / Edit Project Employee</h2>
+
+    <form #f="ngForm" (ngSubmit)="submitForm(f)" style="display: flex; flex-direction: column; gap: 10px;">
+
+      <!-- PROJECT DROPDOWN -->
+      <label>Project</label>
+      <select class="form-select" [(ngModel)]="formData.projectId" name="projectId" required>
+        <option value="">Select Project</option>
+        <option *ngFor="let p of projects" [value]="p.projectId">
+          {{ p.projectName }} ({{ p.projectId }})
+        </option>
+      </select>
+
+      <!-- EMPLOYEE DROPDOWN -->
+      <label>Employee</label>
+      <select class="form-select" [(ngModel)]="formData.employeeId" name="employeeId" required>
+        <option value="">Select Employee</option>
+        <option *ngFor="let emp of employees" [value]="emp.employeeId">
+          {{ emp.name }} ({{ emp.employeeId }})
+        </option>
+      </select>
+
+      <!-- ASSIGNED DATE -->
+      <label>Assigned Date</label>
+      <input 
+        type="date" 
+        [(ngModel)]="formData.assignedDate" 
+        name="assignedDate" 
+        class="form-control" required 
+      />
+
+      <!-- ROLE -->
+      <label>Role</label>
+      <input 
+        type="text"
+        placeholder="Enter role"
+        [(ngModel)]="formData.role"
+        name="role"
+        class="form-control"
+        required
+      />
+
+      <button type="submit" class="btn-submit" style="margin-top: 10px;">Submit</button>
+
+    </form>
+  </div>
+
+</div>
